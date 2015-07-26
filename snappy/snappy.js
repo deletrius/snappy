@@ -1,12 +1,9 @@
-var Images = new FS.Collection("images", {
-  stores: [new FS.Store.FileSystem("images", { path: "~/uploads" })]
-});
+
+ImageCollection = new Mongo.Collection("imageCollection");
 
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
-
-
 
   Template.hello.helpers({
     getCounterSessionValue: function () {
@@ -20,32 +17,61 @@ if (Meteor.isClient) {
       Session.set('counter', Session.get('counter') + 1);
       console.log("you clicked!");
     }
-
   });
 
-  Template.uploadImage.events({
-    'change .myFileInput': function (event, template) {
-      FS.Utility.eachFile(event, function (file) {
-        Images.insert(file, function (err, fileObj) {
-          //console.log(fileObj.path);
-          // console.log(fileObj.;
-          console.log("uploading");
+  Template.uploadFileForm.events({
+    'submit': function(event, template){
+      console.log("submitting");
+      event.preventDefault();
+      if (window.File && window.FileReader && window.FileList && window.Blob) {
+        _.each(template.find('#files').files, function(file) {
+          if(file.size > 1){
+            console.log("found file with size: " + file.size);
+            var reader = new FileReader();
+            reader.onload = function(e) {
+              console.log("creating file: " + file.name);
+              console.log("url: " + reader.result);
+              ImageCollection.insert({
+                name: file.name,
+                type: file.type,
+                dataUrl: reader.result
+              });
+            }
+            reader.readAsDataURL(file);
+          }
         });
-      });
+      }
+    },
+    'click .clearCollection': function(event, template){
+      console.log("deleting collection");
+      // ImageCollection.remove();
+      Meteor.call('removeAllImageCollection')
     }
   });
 
-  Template.imageView.helpers({
-    images: function () {
-      return Images.find(); // Where Images is an FS.Collection instance
+  Template.uploadFileForm.helpers({
+    dataUrl: function () {
+      return ImageCollection.findOne().dataUrl;
+    },
+    name: function () {
+      return ImageCollection.findOne().name;
     }
   });
-
-
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+    ImageCollection.remove({});
+
+    return Meteor.methods({
+
+      removeAllImageCollection: function() {
+
+        return ImageCollection.remove({});
+
+      }
+
+    });
   });
 }
