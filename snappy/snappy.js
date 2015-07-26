@@ -32,7 +32,6 @@ if (Meteor.isClient) {
 		for (i = 0; i < 1; i++) { 
 			var img = document.createElement("img");
 			img.src = data.SearchResults.Products[i].Description.ImageURL;
-      var imgStr = "<img src=" + img.src + " />";
 			img.width = 200;
 			img.height = 200;
 			
@@ -81,7 +80,7 @@ if (Meteor.isClient) {
 			// src.appendChild(hr);
 
       ChatCollection.insert({
-        message: imgStr,
+        imageUrl: img.src,
         timestamp: Date.now()
       });
       ChatCollection.insert({
