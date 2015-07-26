@@ -41,7 +41,6 @@
 <br>
 	{{> chat}}
 
-
   <br>
   <br>
   <br>
@@ -63,8 +62,6 @@
   <br>
   <br>
   <br>
-  
-
 
 		<div id="searchInput">
 	Search keywords: <input type="text" id="myText" value="Mickey"><br>
@@ -94,7 +91,6 @@
   <div id="header">
 	<h1>City Gallery</h1>
   </div>
-  <!-- {{> CR}} -->
   
 </body>
 
@@ -107,9 +103,7 @@
   <form>
 		<input id="files" type="file" accept="image/*" style="display: none;"/>
     <img src='/camera.jpg' onclick="document.getElementById('files').click()">
-<!-- 		<input type="submit" /> -->
 	</form>
-	<!-- <a href="{{dataUrl}}" target="_blank">{{name}}</a> -->
 	<img alt={{name}} src="{{dataUrl}}" />
   
 	<div class="clearCollection button raised blue" style="width: 200px;"><div class="center">Clear Collection</div></div>
@@ -137,7 +131,6 @@
   <div id="input" class="well">
     <strong>Your message</strong>
     <input id="newMessage" onkeydown="if (event.keyCode == 13) document.getElementById('send').click()" />
-    <!-- <input type="text" placeholder="Your name..." id="username" /> -->
     <button id="send">Send</button>
   </div>
 
@@ -145,10 +138,6 @@
   </div>
 </template>
 
-
 <template name="sendCustomer">
 <div class="button raised blue" id="firstProduct" style="width: 200px;"><div class="center">Send First Product</div></div>
 </template>
-<!-- <template name="CR">
-	
-</template> -->
