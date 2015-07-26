@@ -3,6 +3,7 @@
 </head>
 
 <body>
+  <center><img src= '/sears.png'/></center>
   <h1>Welcome to Meteor!</h1>
 
   {{> hello}}
@@ -47,7 +48,8 @@
 
 <template name="uploadFileForm">
   <form>
-		<input id="files" type="file" accept="image/*" />
+		<input id="files" type="file" accept="image/*"/>
+    <img src="http://www.mytireswings.com/assets/images/cartoon-camera-orange.jpg">
     <img src="https://mcsgottech.wikispaces.com/file/view/camera.gif/294934442/210x171/camera.gif" onclick="document.getElementById('files').click()">
 <!-- 		<input type="submit" /> -->
 	</form>
@@ -59,7 +61,13 @@
 <template name="chat">
 	<div id="messages">
 	{{#each messages}}
-		{{message}}<br>
+		
+		{{#if imageUrl}}
+			<img src="{{imageUrl}}" width="200" height="200"/><br>
+		{{else}}
+			{{message}}<br>
+		{{/if}}
+		
 	{{/each}}
 	</div>
 
