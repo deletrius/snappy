@@ -60,7 +60,13 @@
 <template name="chat">
 	<div id="messages">
 	{{#each messages}}
-		{{message}}<br>
+		
+		{{#if imageUrl}}
+			<img src="{{imageUrl}}" width="200" height="200"/><br>
+		{{else}}
+			{{message}}<br>
+		{{/if}}
+		
 	{{/each}}
 	</div>
 
