@@ -20,7 +20,7 @@ if (Meteor.isClient) {
 		
 		document.getElementById("header").innerHTML = "";
 		
-		for (i = 0; i < 10; i++) { 
+		for (i = 0; i < data.SearchResults.Products.length; i++) { 
 			
 			arrOptions[i] = data.SearchResults.Products[i].Description.ImageURL;
 			var img = document.createElement("img");
