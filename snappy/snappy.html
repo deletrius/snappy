@@ -3,13 +3,71 @@
 </head>
 
 <body>
+  <center><img src= '/sears.png'/></center>
   <h1>Welcome to Meteor!</h1>
 
   {{> hello}}
 
   {{> uploadFileForm}}
 
+<br>
+<br>
+      <div id="brand">
+  Brand: <input type="text" id="brandInput" value=""><br>
+  </div>
+
+    <div id="cat">
+  Category: 
+  <select>
+  <option value="Toys & Games">Toys & Games</option>
+  <option value="Home">Home</option>
+  <option value="TVs & Electronics">TVs & Electronics</option>
+  <option value="Fitness & Sports">Fitness & Sports</option>
+  <option value="Books & Magazines">Books & Magazines</option>
+  <option value="Jewelry">Jewelry</option>
+  <option value="Baby">Baby</option>
+  <option value="Clothing, Shoes & Jewelry">Clothing, Shoes & Jewelry</option>
+  <option value="Food & Grocery">Food & Grocery</option>
+  <option value="Automotive">Automotive</option>
+  <option value="Office Supplies">Office Supplies</option>
+  <option value="Outdoor Living">Outdoor Living</option>
+</select>
+  </div>
+
+    <div id="maxPrice">
+  Max Price: $<input type="number" id="maxPriceInput" value="" min="0"><br>
+  </div>
+
+<br>
+<button id="chatWithSears">Chat With Sears!</button>
+<br>
+<br>
 	{{> chat}}
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+
 
 		<div id="searchInput">
 	Search keywords: <input type="text" id="myText" value="Mickey"><br>
@@ -47,7 +105,9 @@
 
 <template name="uploadFileForm">
   <form>
-		<input id="files" type="file" accept="image/*" />
+		<input id="files" type="file" accept="image/*"/>
+    <img src="http://www.mytireswings.com/assets/images/cartoon-camera-orange.jpg">
+    <img src="https://mcsgottech.wikispaces.com/file/view/camera.gif/294934442/210x171/camera.gif" onclick="document.getElementById('files').click()">
 <!-- 		<input type="submit" /> -->
 	</form>
 	<!-- <a href="{{dataUrl}}" target="_blank">{{name}}</a> -->
