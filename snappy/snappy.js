@@ -18,6 +18,68 @@ if (Meteor.isClient) {
       // increment the counter when button is clicked
       Session.set('counter', Session.get('counter') + 1);
       console.log("you clicked!");
+	  
+	  var playerNameVar = document.getElementById("myText").value;
+	  var catVar = document.getElementById("myText2").value;
+	  
+	  Meteor.call('getJson', playerNameVar, catVar, function(err, data) {
+		  if (err)
+			console.log(err);
+		console.log(data);
+		
+		document.getElementById("header").innerHTML = "";
+		
+		for (i = 0; i < data.SearchResults.Products.length; i++) { 
+			var img = document.createElement("img");
+			img.src = data.SearchResults.Products[i].Description.ImageURL;
+			img.width = 200;
+			img.height = 200;
+			
+			var h = document.createElement("H1")                // Create a <h1> element
+			var t = document.createTextNode("Name: " + data.SearchResults.Products[i].Description.Name);     // Create a text node
+			h.appendChild(t);
+
+			var h2 = document.createElement("H1")                // Create a <h1> element
+			var t2 = document.createTextNode("Sale Price: " + data.SearchResults.Products[i].Price.DisplayPrice);     // Create a text node
+			h2.appendChild(t2);
+			
+			var h4 = document.createElement("H3")                // Create a <h1> element
+			var t4 = document.createTextNode("Original Price: " + data.SearchResults.Products[i].Price.CutPrice);     // Create a text node
+			h4.appendChild(t4);
+			
+			var h3 = document.createElement("H1")                // Create a <h1> element
+			var t3 = document.createTextNode("Rating (/5): " + data.SearchResults.Products[i].Description.ReviewRating.Rating);     // Create a text node
+			h3.appendChild(t3);
+			
+			http://www.sears.com/disney-dcm-1-classic-mickey-waffle-maker-brushed/p-SPM1177668414
+			
+			
+			
+			var h5 = document.createElement("H2")                // Create a <h1> element
+			var t5 = document.createTextNode("Link to buy:");     // Create a text node
+			h5.appendChild(t5);
+			
+			var a = document.createElement('a');
+			var linkText = document.createTextNode(data.SearchResults.Products[i].Description.Name);
+			a.appendChild(linkText);
+			a.title = data.SearchResults.Products[i].Description.Name;
+			a.href = "http://www.sears.com/" + data.SearchResults.Products[i].Description.Name + "/p-" +data.SearchResults.Products[i].Id.PartNumber;
+			a.target = "_blank";
+			
+			var hr = document.createElement("hr")
+			
+			var src = document.getElementById("header");
+			src.appendChild(img);
+			src.appendChild(h);
+			src.appendChild(h2);
+			src.appendChild(h4);
+			src.appendChild(h3);
+			src.appendChild(h5);
+			src.appendChild(a);
+			src.appendChild(hr);
+		}
+		
+		});
     }
   });
 
@@ -109,7 +171,21 @@ if (Meteor.isServer) {
       , removeAllChat: function() 
       {
         return ChatCollection.remove({});
-      }
+      },
+	  
+	  getJson: function(keyword, cat) {
+		Meteor.absoluteUrl.defaultOptions.rootUrl = "http://api.developer.sears.com";
+		
+		try{
+			myobject = HTTP.get(Meteor.absoluteUrl("/v2.1/products/search/Sears/json/keyword/{" + keyword +"}?apikey=MY5vZlQfgMyRDr4cWzlsgPjRyqUq2ZjQ&category=" + cat)).data;
+			return myobject;
+		}
+		catch(e){
+			console.log(e.message)
+			return e.message;
+		}
+		return null;
+	  }
 
     });
   });
