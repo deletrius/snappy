@@ -1,6 +1,8 @@
 
 ImageCollection = new Mongo.Collection("imageCollection");
 
+ChatCollection = new Mongo.Collection("Messages");
+
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
@@ -44,7 +46,7 @@ if (Meteor.isClient) {
     },
     'click .clearCollection': function(event, template){
       console.log("deleting collection");
-      Meteor.call('removeAllImageCollection')
+      Meteor.call('removeAllImageCollection');
     }
   });
 
@@ -56,21 +58,57 @@ if (Meteor.isClient) {
       return ImageCollection.findOne().name;
     }
   });
+
+  Template.chat.events({
+    'click #send': function(event, template){
+      var newM = $('#newMessage').val();
+      if (!newM) {
+        alert('Fill out both fields yo!');
+      }
+      ChatCollection.insert({
+        message: newM,
+        timestamp: Date.now()
+      }, function(err, id) {
+        if (err) {
+          alert('Something definitely went wrong!');
+        }
+        $('#newMessage').val("");
+        $('#newMessage').focus();
+      });
+
+    }
+    , 'click #clearChat': function(event, template){
+      Meteor.call('removeAllChat');
+    }
+
+  });
+
+  Template.chat.messages = function() {
+    return ChatCollection.find({
+    }, {
+      sort: {
+        timestamp: 1
+      },
+      limit: 20
+    });
+  }
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
     ImageCollection.remove({});
-
-    return Meteor.methods({
-
-      removeAllImageCollection: function() {
-
 //You’re also not allowed to call remove({}) from any client side code.
 //solution is that you can call methods defined on the Meteor server from the client using the Meteor.call method
+    return Meteor.methods(
+    {
+      removeAllImageCollection: function() 
+      {
         return ImageCollection.remove({});
-
+      }
+      , removeAllChat: function() 
+      {
+        return ChatCollection.remove({});
       }
 
     });
