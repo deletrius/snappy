@@ -1,21 +1,23 @@
 <head>
+	<meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>snappy</title>
 </head>
 
-<body>
-  <center><img src= '/sears.png'/></center>
+<body style="width: 400px;">
+  <center><img src= '/sears.png'/>
 <br>
   {{> uploadFileForm}}
 
 <br>
 <br>
       <div id="brand">
-  Brand: <input type="text" id="brandInput" value=""><br>
+  Brand: <input type="text" id="brandInput" value="" style="margin-bottom: 4px;"><br>
   </div>
 
     <div id="cat">
   Category: 
-  <select>
+  <select style="margin-bottom: 4px;">
   <option value="Toys & Games">Toys & Games</option>
   <option value="Home">Home</option>
   <option value="TVs & Electronics">TVs & Electronics</option>
@@ -64,11 +66,11 @@
   <br>
 
 		<div id="searchInput">
-	Search keywords: <input type="text" id="myText" value="Mickey"><br>
+	Search keywords: <input type="text" id="myText" value="Mickey" style="margin-bottom: 4px;"><br>
   </div>
   
   <div id="catInput">
-	Search category: <input type="text" id="myText2" value="Appliances"><br>
+	Search category: <input type="text" id="myText2" value="Appliances" style="margin-bottom: 4px;"><br>
 	<select>
   <option value="Toys & Games">Toys & Games</option>
   <option value="Home">Home</option>
@@ -91,7 +93,7 @@
   <div id="header">
 	<h1>City Gallery</h1>
   </div>
-  
+  </center>
 </body>
 
 <template name="hello">
@@ -102,9 +104,9 @@
 <template name="uploadFileForm">
   <form>
 		<input id="files" type="file" accept="image/*" style="display: none;"/>
-    <img src='/camera.jpg' onclick="document.getElementById('files').click()">
+    <img src='/camera.jpg' style="cursor: pointer;" onclick="document.getElementById('files').click()">
 	</form>
-	<img alt={{name}} src="{{dataUrl}}" />
+	<img alt={{name}} src="{{dataUrl}}" width="100" height="100" /><br>
   
 	<div class="clearCollection button raised blue" style="width: 200px;"><div class="center">Clear Collection</div></div>
 
@@ -130,7 +132,7 @@
 
   <div id="input" class="well">
     <strong>Your message</strong>
-    <input id="newMessage" onkeydown="if (event.keyCode == 13) document.getElementById('send').click()" />
+    <input id="newMessage" onkeydown="if (event.keyCode == 13) document.getElementById('send').click()" style="margin-bottom: 4px;"/>
     <button id="send">Send</button>
   </div>
 
@@ -139,5 +141,5 @@
 </template>
 
 <template name="sendCustomer">
-<div class="button raised blue" id="firstProduct" style="width: 200px;"><div class="center">Send First Product</div></div>
+<div class="button raised blue" id="firstProduct" style="width: 200px; margin-bottom: 4px;"><div class="center">Send First Product</div></div>
 </template>
