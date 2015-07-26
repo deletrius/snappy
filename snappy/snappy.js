@@ -20,7 +20,7 @@ if (Meteor.isClient) {
   });
 
   Template.uploadFileForm.events({
-    'submit': function(event, template){
+    'change #files': function(event, template){
       console.log("submitting");
       event.preventDefault();
       if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -44,7 +44,6 @@ if (Meteor.isClient) {
     },
     'click .clearCollection': function(event, template){
       console.log("deleting collection");
-      // ImageCollection.remove();
       Meteor.call('removeAllImageCollection')
     }
   });
@@ -68,6 +67,8 @@ if (Meteor.isServer) {
 
       removeAllImageCollection: function() {
 
+//You’re also not allowed to call remove({}) from any client side code.
+//solution is that you can call methods defined on the Meteor server from the client using the Meteor.call method
         return ImageCollection.remove({});
 
       }
