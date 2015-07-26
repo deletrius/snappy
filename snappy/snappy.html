@@ -56,8 +56,11 @@
 </template>
 
 <template name="chat">
-	<textarea rows="10" id="messages" readonly>{{#each messages}}{{message}}
-{{/each}}</textarea>
+	<div id="messages">
+	{{#each messages}}
+		{{message}}<br>
+	{{/each}}
+	</div>
 
   <div id="input" class="well">
     <strong>Your message</strong>
