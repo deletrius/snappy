@@ -56,7 +56,7 @@ if (Meteor.isClient) {
 			
 			
 			// var h5 = document.createElement("H2")                // Create a <h1> element
-			var t5 = "Link to buy:" + "http://www.sears.com/" + data.SearchResults.Products[i].Description.Name + "/p-" +data.SearchResults.Products[i].Id.PartNumber;     // Create a text node
+			var t5 = "http://www.sears.com/" + data.SearchResults.Products[i].Description.Name + "/p-" +data.SearchResults.Products[i].Id.PartNumber;     // Create a text node
 			// h5.appendChild(t5);
 			
 			// var a = document.createElement('a');
@@ -100,7 +100,7 @@ if (Meteor.isClient) {
         timestamp: Date.now()
       });
       ChatCollection.insert({
-        message: t5,
+        linkUrl: t5,
         timestamp: Date.now()
       });
 		}
