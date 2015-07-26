@@ -4,7 +4,7 @@
 
 <body>
   <center><img src= '/sears.png'/></center>
-
+<br>
   {{> uploadFileForm}}
 
 <br>
@@ -36,7 +36,7 @@
   </div>
 
 <br>
-<button id="chatWithSears">Chat With Sears!</button>
+<div class="button raised green" id="chatWithSears" style="width: 200px;"><div class="center">Chat With Sears!</div></div>
 <br>
 <br>
 	{{> chat}}
@@ -111,7 +111,9 @@
 	</form>
 	<!-- <a href="{{dataUrl}}" target="_blank">{{name}}</a> -->
 	<img alt={{name}} src="{{dataUrl}}" />
-	<button class="clearCollection">Clear Collection</button>
+  
+	<div class="clearCollection button raised blue" style="width: 200px;"><div class="center">Clear Collection</div></div>
+
 </template>
 
 <template name="chat">
@@ -138,12 +140,14 @@
     <!-- <input type="text" placeholder="Your name..." id="username" /> -->
     <button id="send">Send</button>
   </div>
-  <button id="clearChat">Clear Chat</button>
+
+  <div class= "button raised grey" id="clearChat" style="width: 200px;"><div class="center">Clear Chat</div>
+  </div>
 </template>
 
 
 <template name="sendCustomer">
-<button id="firstProduct">Send First Product To Customer</button>
+<div class="button raised blue" id="firstProduct" style="width: 200px;"><div class="center">Send First Product</div></div>
 </template>
 <!-- <template name="CR">
 	
