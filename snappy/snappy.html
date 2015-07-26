@@ -4,7 +4,7 @@
 
 <body>
   <center><img src= '/sears.png'/></center>
-
+<br>
   {{> uploadFileForm}}
 
   {{> hello}}
@@ -37,12 +37,11 @@
   </div>
 
 <br>
-<button id="chatWithSears">Chat With Sears!</button>
+<div class="button raised green" id="chatWithSears" style="width: 200px;"><div class="center">Chat With Sears!</div></div>
 <br>
 <br>
 	{{> chat}}
 
-
   <br>
   <br>
   <br>
@@ -64,8 +63,6 @@
   <br>
   <br>
   <br>
-  
-
 
 		<div id="searchInput">
 	Search keywords: <input type="text" id="myText" value="Mickey"><br>
@@ -88,11 +85,13 @@
   <option value="Outdoor Living">Outdoor Living</option>
 </select><br>
   </div>
+
+<br>
+  {{> sendCustomer}}
   
   <div id="header">
 	<h1>City Gallery</h1>
   </div>
-  <!-- {{> CR}} -->
   
 </body>
 
@@ -104,12 +103,12 @@
 <template name="uploadFileForm">
   <form>
 		<input id="files" type="file" accept="image/*" style="display: none;"/>
-    <img src="https://mcsgottech.wikispaces.com/file/view/camera.gif/294934442/210x171/camera.gif" onclick="document.getElementById('files').click()">
-<!-- 		<input type="submit" /> -->
+    <img src='/camera.jpg' onclick="document.getElementById('files').click()">
 	</form>
-	<!-- <a href="{{dataUrl}}" target="_blank">{{name}}</a> -->
 	<img alt={{name}} src="{{dataUrl}}" />
-	<button class="clearCollection">Clear Collection</button>
+  
+	<div class="clearCollection button raised blue" style="width: 200px;"><div class="center">Clear Collection</div></div>
+
 </template>
 
 <template name="chat">
@@ -133,12 +132,13 @@
   <div id="input" class="well">
     <strong>Your message</strong>
     <input id="newMessage" onkeydown="if (event.keyCode == 13) document.getElementById('send').click()" />
-    <!-- <input type="text" placeholder="Your name..." id="username" /> -->
     <button id="send">Send</button>
   </div>
-  <button id="clearChat">Clear Chat</button>
+
+  <div class= "button raised grey" id="clearChat" style="width: 200px;"><div class="center">Clear Chat</div>
+  </div>
 </template>
 
-<!-- <template name="CR">
-	
-</template> -->
+<template name="sendCustomer">
+<div class="button raised blue" id="firstProduct" style="width: 200px;"><div class="center">Send First Product</div></div>
+</template>
