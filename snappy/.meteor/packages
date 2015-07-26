@@ -9,5 +9,4 @@ autopublish
 insecure
 cfs:standard-packages
 cfs:filesystem
-iron:router
 http
