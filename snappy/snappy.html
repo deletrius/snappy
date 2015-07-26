@@ -4,9 +4,6 @@
 
 <body>
   <center><img src= '/sears.png'/></center>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
 
   {{> uploadFileForm}}
 
@@ -105,8 +102,7 @@
 
 <template name="uploadFileForm">
   <form>
-		<input id="files" type="file" accept="image/*"/>
-    <img src="http://www.mytireswings.com/assets/images/cartoon-camera-orange.jpg">
+		<input id="files" type="file" accept="image/*" style="display: none;"/>
     <img src="https://mcsgottech.wikispaces.com/file/view/camera.gif/294934442/210x171/camera.gif" onclick="document.getElementById('files').click()">
 <!-- 		<input type="submit" /> -->
 	</form>
