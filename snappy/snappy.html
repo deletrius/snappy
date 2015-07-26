@@ -118,9 +118,14 @@
 		{{#if imageUrl}}
 			<img src="{{imageUrl}}" width="200" height="200"/><br>
 		{{else}}
-			{{message}}<br>
+			{{#if linkUrl}}
+				<a href="{{linkUrl}}" target="_blank">Click here to buy</a>
+			{{else}}
+				{{message}}<br>
+			{{/if}}
+
 		{{/if}}
-		
+
 	{{/each}}
 	</div>
 
