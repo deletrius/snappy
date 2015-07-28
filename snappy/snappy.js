@@ -48,10 +48,6 @@ if (Meteor.isClient) {
 			var t33 = document.createTextNode("Rating (/5): " + data.SearchResults.Products[i].Description.ReviewRating.Rating);     // Create a text node
 			h3.appendChild(t33);
 			
-			http://www.sears.com/disney-dcm-1-classic-mickey-waffle-maker-brushed/p-SPM1177668414
-			
-			
-			
 			var h5 = document.createElement("H2")                // Create a <h1> element
 			var t5 = "http://www.sears.com/" + data.SearchResults.Products[i].Description.Name + "/p-" +data.SearchResults.Products[i].Id.PartNumber;     // Create a text node
 			var t55 = document.createTextNode("http://www.sears.com/" + data.SearchResults.Products[i].Description.Name + "/p-" +data.SearchResults.Products[i].Id.PartNumber);     // Create a text node
